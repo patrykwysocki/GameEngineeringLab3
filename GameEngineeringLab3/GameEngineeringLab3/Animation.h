@@ -1,7 +1,10 @@
-#ifndef PLAYER_FSM_H
-#define PLAYER_FSM_H
+#ifndef ANIMATION_H
+#define ANIMATION_H
 
-class PlayerFSM
+#include "State.h"
+class Idle;
+
+class Animation
 {
 
 	// Please review very good article on Stackoverflow
@@ -13,20 +16,20 @@ private:
 							// prior to setCurrent
 	class State* m_previous;
 public:
-	PlayerFSM();
-	~PlayerFSM();
+	Animation();
+	~Animation();
 	void setCurrent(State* s);
 	void setPrevious(State* s);
 	State* getCurrent();
 	State* getPrevious();
-	
+
 	void idle();
 	void jumping();
 	void climbing();
 
-// Try uncommenting and comment the declaration above
-//private:
-//	class State* m_current;
+	// Try uncommenting and comment the declaration above
+	//private:
+	//	class State* m_current;
 };
 
 #endif // !ANIMATION_H

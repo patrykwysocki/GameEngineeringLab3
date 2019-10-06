@@ -1,18 +1,4 @@
-﻿  AnimatedSprite.cpp
-C:\Users\patrykwysocki\Desktop\GameEngineeringLab3\GameEngineeringLab3\GameEngineeringLab3\AnimatedSprite.cpp(8,94): error C3861:  'seconds': identifier not found
-C:\Users\patrykwysocki\Desktop\GameEngineeringLab3\GameEngineeringLab3\GameEngineeringLab3\AnimatedSprite.cpp(8,57): error C2614:  'AnimatedSprite': illegal member initialization: 'SDL_s' is not a base or member
-C:\Users\patrykwysocki\Desktop\GameEngineeringLab3\GameEngineeringLab3\GameEngineeringLab3\AnimatedSprite.cpp(8,87): error C2614:  'AnimatedSprite': illegal member initialization: 'm_time' is not a base or member
-C:\Users\patrykwysocki\Desktop\GameEngineeringLab3\GameEngineeringLab3\GameEngineeringLab3\AnimatedSprite.cpp(10,118): error C3861:  'seconds': identifier not found
-C:\Users\patrykwysocki\Desktop\GameEngineeringLab3\GameEngineeringLab3\GameEngineeringLab3\AnimatedSprite.cpp(10,80): error C2614:  'AnimatedSprite': illegal member initialization: 'Sprite' is not a base or member
-C:\Users\patrykwysocki\Desktop\GameEngineeringLab3\GameEngineeringLab3\GameEngineeringLab3\AnimatedSprite.cpp(10,111): error C2614:  'AnimatedSprite': illegal member initialization: 'm_time' is not a base or member
-  Climbing.cpp
-C:\Users\patrykwysocki\Desktop\GameEngineeringLab3\GameEngineeringLab3\GameEngineeringLab3\AnimatedSprite.cpp(47,23): warning C4018:  '>': signed/unsigned mismatch
-  Idle.cpp
-  Input.cpp
-  Jumping.cpp
-  Player.cpp
-C:\Users\patrykwysocki\Desktop\GameEngineeringLab3\GameEngineeringLab3\GameEngineeringLab3\Climbing.cpp(1,10): error C1083:  Cannot open include file: 'Climbing.h': No such file or directory
-C:\Users\patrykwysocki\Desktop\GameEngineeringLab3\GameEngineeringLab3\GameEngineeringLab3\Player.cpp(23,34): error C2039:  'setTextureRect': is not a member of 'AnimatedSprite'
-  PlayerMachine.cpp
+﻿  Game.cpp
+  Main.cpp
   Generating Code...
-C:\Users\patrykwysocki\Desktop\GameEngineeringLab3\GameEngineeringLab3\GameEngineeringLab3\AnimatedSprite.h(11): message :  see declaration of 'AnimatedSprite'
+  GameEngineeringLab3.vcxproj -> C:\Users\wysoc\Desktop\GameEngineeringLab3\GameEngineeringLab3\Debug\GameEngineeringLab3.exe

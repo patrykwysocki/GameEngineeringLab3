@@ -1,15 +1,17 @@
 #ifndef CLIMBING_H
 #define CLIMBING_H
 
-#include "State.h"
+#include "Animation.h"
+#include "Jumping.h"
+#include "Idle.h"
 
 class Climbing : public State
 {
 public:
 	Climbing() {};
 	~Climbing() {};
-	void idle(PlayerFSM* a);
-	void jumping(PlayerFSM* a);
+	void idle(Animation* a);
+	void jumping(Animation* a);
 };
 
-#endif // !IDLE_H
+#endif 

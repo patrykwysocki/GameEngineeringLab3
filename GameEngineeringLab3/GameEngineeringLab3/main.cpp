@@ -1,64 +1,17 @@
-#include <iostream>
-#include <SDL.h>
-#include <SDL_image.h>
-const int WIDTH = 640, HEIGHT = 360;
-int main(int argc, char* argv[])
-{
+#pragma comment(lib, "SDL2.lib")
+#pragma comment(lib, "SDL2main.lib")
+#pragma comment(lib, "SDL2test.lib")
+#pragma comment(lib, "SDL2_image.lib")
 
-	SDL_Surface* imageSurface = NULL;
-	SDL_Surface* windowSurface = NULL;
+#include "Game.h"
 
-	SDL_Init(SDL_INIT_EVERYTHING);
+using namespace std;
 
-	SDL_Window* window = SDL_CreateWindow("Hello SDL World", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_ALLOW_HIGHDPI);
-	windowSurface = SDL_GetWindowSurface(window);
+int main(int argc, char* argv[]) {
 
-	// Check that the window was successfully created
-	if (NULL == window)
-	{
-		// In the case that the window could not be made...
-		std::cout << "Could not create window: " << SDL_GetError() << std::endl;
-		return 1;
-	}
+	Game game;
+	game.run();
 
-	if (!(IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG))
-	{
-		std::cout << "Could not create window: " << IMG_GetError() << std::endl;
-		return 1;
-	}
+	return 0;
 
-	SDL_Event windowEvent;
-
-	imageSurface = IMG_Load("assets/logo.png");
-
-	if (NULL == imageSurface)
-	{
-		std::cout << "SDL could not load image! SDL Error: " << SDL_GetError() << std::endl;
-	}
-
-	while (true)
-	{
-		if (SDL_PollEvent(&windowEvent))
-		{
-			if (SDL_QUIT == windowEvent.type)
-			{
-				break;
-			}
-		}
-
-		SDL_BlitSurface(imageSurface, NULL, windowSurface, NULL);
-
-		SDL_UpdateWindowSurface(window);
-	}
-
-	SDL_FreeSurface(imageSurface);
-	SDL_FreeSurface(windowSurface);
-
-	imageSurface = NULL;
-	windowSurface = NULL;
-
-	SDL_DestroyWindow(window);
-	SDL_Quit();
-
-	return EXIT_SUCCESS;
 }

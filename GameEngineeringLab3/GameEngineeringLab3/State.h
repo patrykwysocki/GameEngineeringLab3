@@ -4,9 +4,10 @@
 #include <iostream>
 #include <typeinfo>
 
-#include "Input.h"
-#include "PlayerFSM.h"
+#include "InputHandler.h"
 #include "Debug.h"
+
+class Animation;
 
 class State
 {
@@ -15,19 +16,19 @@ public:
 
 	virtual void update() {}
 
-	virtual void idle(PlayerFSM* a)
+	virtual void idle(Animation* a)
 	{
 		DEBUG_MSG("State::Idling");
 	}
-	virtual void jumping(PlayerFSM* a)
+	virtual void jumping(Animation* a)
 	{
 		DEBUG_MSG("State::Jumping");
 	}
-	virtual void climbing(PlayerFSM* a)
+	virtual void climbing(Animation* a)
 	{
 		DEBUG_MSG("State::Climbing");
 	}
 };
 
-#endif // ! ANIMATION_H
+#endif //
 

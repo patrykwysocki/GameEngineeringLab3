@@ -1,23 +1,20 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "Input.h"
-#include "PlayerFSM.h"
 #include "AnimatedSprite.h"
 
 class Player
 {
 private:
-	PlayerFSM m_state;
-	AnimatedSprite m_animated_sprite;
-	Player();
+	//Animation m_animation;
+	AnimatedSprite* m_currentSprite;
 
 public:
-	Player(const AnimatedSprite&);
+	Player();
 	~Player();
-	AnimatedSprite& getAnimatedSprite();
-	void handleInput(Input);
+	AnimatedSprite* getAnimatedSprite();
 	void update();
+	void setCurrent(AnimatedSprite* sprite);
 };
 
 #endif // !PLAYER_H

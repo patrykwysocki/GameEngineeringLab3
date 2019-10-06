@@ -1,39 +1,39 @@
 #ifndef ANIMATED_SPRITE_H
 #define ANIMATED_SPRITE_H
 
-#include <SDL.h>
-#include <SDL_image.h>
-#include "Debug.h"
 #include <vector>
+#include "Debug.h"
+#include <SDL.h>
+#include <SDL_timer.h>
 
 using namespace std;
 
-class AnimatedSprite
-{
+class AnimatedSprite {
 public:
 	AnimatedSprite();
-	AnimatedSprite(const SDL_Texture&);
-	AnimatedSprite(const SDL_Texture&, const SDL_Rect&);
+	AnimatedSprite(SDL_Texture* Texture);
+	AnimatedSprite(SDL_Texture* Texture, SDL_Rect &IntRect);
 	~AnimatedSprite();
 
-	//const Clock& getClock();
-	//const Time& getTime();
-	const vector<SDL_Rect>& getFrames();
-	const SDL_Rect& getFrame(int);
+	Uint32& getTime();
+	vector< SDL_Rect>& getFrames();
+	SDL_Rect& getFrame(int);
 	void addFrame(SDL_Rect&);
-	const int getCurrentFrame();
+	int getCurrentFrame();
 	void update();
-	
+	void setRect(SDL_Rect& rect);
+	SDL_Texture* m_spriteTexture;
 private:
 	vector<SDL_Rect> m_frames;
 	int m_current_frame;
 
-	Uint32 m_currentTime;
-	Uint32 m_deltaTime;
-	Uint32 m_lastTime;
-	Uint32 m_framePerSecond;
-	Uint32 m_timePlayingFrame;
+	//const SDL_Texture* m_spriteTexture;
+	Uint32 frameTime;
+
+	int startTime;
+	int runTime;
 
 };
 
 #endif // !ANIMATED_SPRITE_H
+
