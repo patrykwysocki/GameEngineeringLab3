@@ -1,35 +1,20 @@
-#ifndef ANIMATION_H
-#define ANIMATION_H
-
-#include "State.h"
-class Idle;
+#pragma once
+#include <SDL.h>
 
 class Animation
 {
-
-	// Please review very good article on Stackoverflow
-	// which covers some solutions to circular dependacies
-	// https://stackoverflow.com/questions/625799/resolve-build-errors-due-to-circular-dependency-amongst-classes
-
-private:
-	class State* m_current; // note order of m_current is 
-							// prior to setCurrent
-	class State* m_previous;
+	class State* current;
+	class State* previous;
 public:
 	Animation();
-	~Animation();
 	void setCurrent(State* s);
 	void setPrevious(State* s);
 	State* getCurrent();
 	State* getPrevious();
+	void idle(SDL_Rect &destRect);
+	void jumping(SDL_Rect &destRect);
+	void climbing(SDL_Rect &destRect);
+	void walking(SDL_Rect& destRect);
+	void falling(SDL_Rect& destRect);
 
-	void idle();
-	void jumping();
-	void climbing();
-
-	// Try uncommenting and comment the declaration above
-	//private:
-	//	class State* m_current;
 };
-
-#endif // !ANIMATION_H

@@ -1,18 +1,14 @@
-#ifndef IDLE_H
-#define IDLE_H
+#pragma once
 
-#include "Climbing.h"
-#include "Jumping.h"
+#include "State.h"
 
 class Idle : public State
 {
 public:
 	Idle() {};
 	~Idle() {};
-	void handleInput();
-	void update();
-	void jumping(Animation* a);
-	void climbing(Animation* a);
-};
+	void walking(Animation* a, SDL_Rect& destRect);
+	void jumping(Animation * a, SDL_Rect &destRect);
+	void climbing(Animation * a, SDL_Rect &destRect);
 
-#endif // !IDLE_H
+};

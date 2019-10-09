@@ -1,34 +1,32 @@
-#ifndef STATE_H
-#define STATE_H
+#pragma once
 
-#include <iostream>
-#include <typeinfo>
-
-#include "InputHandler.h"
-#include "Debug.h"
-
-class Animation;
+#include "Animation.h"
+#include <SDL.h>
+#include  <iostream>
 
 class State
 {
 public:
-	virtual void handleInput() {}
-
-	virtual void update() {}
-
-	virtual void idle(Animation* a)
+	virtual void idle(Animation* a, SDL_Rect &destRect)
 	{
-		DEBUG_MSG("State::Idling");
+		std::cout << "State::Idling" << std::endl;
 	}
-	virtual void jumping(Animation* a)
+
+	virtual void jumping(Animation* a, SDL_Rect &destRect)
 	{
-		DEBUG_MSG("State::Jumping");
+		std::cout << "State::Jumping" << std::endl;
 	}
-	virtual void climbing(Animation* a)
+
+	virtual void climbing(Animation* a, SDL_Rect &destRect)
 	{
-		DEBUG_MSG("State::Climbing");
+		std::cout << "State::Climbing" << std::endl;
+	}
+	virtual void falling(Animation* a, SDL_Rect& destRect)
+	{
+		std::cout << "State::Falling" << std::endl;
+	}
+	virtual void walking (Animation* a, SDL_Rect& destRect)
+	{
+		std::cout << "State::Walking" << std::endl;
 	}
 };
-
-#endif //
-

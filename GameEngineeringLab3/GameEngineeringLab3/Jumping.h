@@ -1,17 +1,13 @@
-#ifndef JUMPING_H
-#define JUMPING_H
+#pragma once
 
-#include "Climbing.h"
+#include "State.h"
 #include "Idle.h"
-#include <string>
 
 class Jumping : public State
 {
 public:
 	Jumping() {};
 	~Jumping() {};
-	void idle(Animation* a);
-	void climbing(Animation* a);
+	void idle(Animation*a, SDL_Rect &destRect);
+	void falling(Animation* a, SDL_Rect& destRect);
 };
-
-#endif 

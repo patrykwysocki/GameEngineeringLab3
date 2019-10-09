@@ -1,37 +1,51 @@
 #include "InputHandler.h"
 
-InputHandler::InputHandler(Player* player, std::vector<AnimatedSprite*> sprites)
+InputHandler::InputHandler()
 {
-	idleButton = new IdleCommand(player, sprites[0]);
-	jumpButton = new JumpCommand(player, sprites[1]);
-	climbButton = new ClimbingCommand(player, sprites[2]);
-
-	idleButton->execute();
-
-	macro = new MacroCommand();
+	fsm = new Animation();
+	m_current = IDLE;
 }
 
-InputHandler::~InputHandler() {}
-
-
-void InputHandler::handleInput(SDL_Keycode event)
+InputHandler::~InputHandler()
 {
 
-	switch (event)
+}
+void InputHandler::setCurrent(Action a) {
+	m_current = a;
+}
+
+InputHandler::Action InputHandler::getCurrent() {
+	return m_current;
+}
+
+
+
+void InputHandler::handleInput(SDL_Event & event, SDL_Rect &destRect)
+{
+
+	switch (event.type)
 	{
-	case SDLK_UP:
-		jumpButton->execute();
-		macro->add(jumpButton);
-		break;
-	case SDLK_LEFT:
-		climbButton->execute();
-		macro->add(climbButton);
-		break;
-	case SDLK_DOWN:
-		idleButton->execute();
-		macro->add(idleButton);
+	case SDL_KEYDOWN:
+		switch (event.key.keysym.sym)
+		{
+		case SDLK_1:
+			fsm->idle(destRect);
+			break;
+		case SDLK_2:
+			fsm->walking(destRect);
+			break;
+		case SDLK_3:
+			fsm->jumping(destRect);
+			break;
+		case SDLK_4:
+			fsm->falling(destRect);
+			break;
+		case SDLK_5:
+			fsm->climbing(destRect);
+			break;
+	
+		}
+
 	}
-
+	
 }
-
-

@@ -1,25 +1,32 @@
-#ifndef INPUTHANDLER_H
-#define INPUTHANDLER_H
+#pragma once
 
-#include <vector>
-#include "Command.h"
-#include "MacroCommand.h"
+#include "Animation.h"
+
+#include <SDL.h>
 
 class InputHandler
 {
-public:
-	InputHandler(Player* player, std::vector<AnimatedSprite*> sprites);
-
+public: 
+	InputHandler();
 	~InputHandler();
+		
 
-	void handleInput(SDL_Keycode event);
+	enum Action
+	{
+		IDLE,
+		JUMP,
+		CLIMB,
+		WALK,
+		FALL
+	};
 
+	void handleInput(SDL_Event & event, SDL_Rect &destRect);
+	void setCurrent(Action);
+	Action getCurrent();
 private:
-	Command* idleButton;
-	Command* jumpButton;
-	Command* climbButton;
 
-	MacroCommand* macro;
-	std::vector<Command*> commands;
-};
-#endif
+
+	Animation * fsm;
+	Action m_current;
+	
+}; 

@@ -1,8 +1,6 @@
-#ifndef CLIMBING_H
-#define CLIMBING_H
+#pragma once
 
-#include "Animation.h"
-#include "Jumping.h"
+#include "State.h"
 #include "Idle.h"
 
 class Climbing : public State
@@ -10,8 +8,7 @@ class Climbing : public State
 public:
 	Climbing() {};
 	~Climbing() {};
-	void idle(Animation* a);
-	void jumping(Animation* a);
-};
+	void idle(Animation* a, SDL_Rect &destRect);
+	void falling (Animation* a, SDL_Rect& destRect);
 
-#endif 
+};

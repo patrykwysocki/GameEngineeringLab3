@@ -1,15 +1,17 @@
 #include "Climbing.h"
-#include "Animation.h"
-
-void Climbing::idle(Animation* a)
+#include "Falling.h"
+void Climbing::idle(Animation* a, SDL_Rect &destRect)
 {
-	std::cout << "Climbing -> Idle" << std::endl;
+	std::cout << "Going from Climbing to Idling" << std::endl;
 	a->setCurrent(new Idle());
+	destRect.y = 0;
 	delete this;
 }
-void Climbing::jumping(Animation* a)
+
+void Climbing::falling(Animation* a, SDL_Rect& destRect)
 {
-	std::cout << "Climbing -> Jump" << std::endl;
-	a->setCurrent(new Jumping());
+	std::cout << "Going from Climbing to Falling" << std::endl;
+	a->setCurrent(new Falling());
+	destRect.y = 255;
 	delete this;
 }

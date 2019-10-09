@@ -3,42 +3,46 @@
 
 Animation::Animation()
 {
-	m_current = new Idle();
+	current = new Idle();
 }
-
-Animation::~Animation() {}
-
 void Animation::setCurrent(State* s)
 {
-	m_current = s;
+	current = s;
 }
-
 State* Animation::getCurrent()
 {
-	return m_current;
+	return current;
 }
-
 void Animation::setPrevious(State* s)
 {
-	m_previous = s;
+	previous = s;
 }
 
 State* Animation::getPrevious()
 {
-	return m_previous;
+	return previous;
+}
+void Animation::idle(SDL_Rect &destRect)
+{
+	current->idle(this, destRect);
 }
 
-void Animation::idle()
+void Animation::jumping(SDL_Rect &destRect)
 {
-	m_current->idle(this);
+	current->jumping(this, destRect);
 }
 
-void Animation::jumping()
+void Animation::climbing(SDL_Rect &destRect)
 {
-	m_current->jumping(this);
+	current->climbing(this, destRect);
 }
 
-void Animation::climbing()
+void Animation::walking(SDL_Rect& destRect)
 {
-	m_current->climbing(this);
+	current->walking(this, destRect);
+}
+
+void Animation::falling(SDL_Rect& destRect)
+{
+	current->falling(this, destRect);
 }
